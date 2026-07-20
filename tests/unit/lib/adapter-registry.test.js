@@ -10,11 +10,13 @@ import { installCodex } from '../../../cli/adapters/codex.js';
 import { installGeminiCli } from '../../../cli/adapters/gemini-cli.js';
 import { installKiro } from '../../../cli/adapters/kiro.js';
 import { installQoder } from '../../../cli/adapters/qoder.js';
+import { installWorkBuddy } from '../../../cli/adapters/workbuddy.js';
+import { installTrae } from '../../../cli/adapters/trae.js';
 
-const KNOWN_IDES = ['cursor', 'opencode', 'claude', 'codex', 'gemini', 'kiro', 'qoder'];
+const KNOWN_IDES = ['cursor', 'opencode', 'claude', 'codex', 'gemini', 'kiro', 'qoder', 'workbuddy', 'trae'];
 
 describe('adapter-registry dispatch', () => {
-  it('all 7 IDEs are registered in ADAPTERS', () => {
+  it('all 9 IDEs are registered in ADAPTERS', () => {
     for (const ide of KNOWN_IDES) {
       const entry = ADAPTERS[ide];
       assert.ok(entry, `missing registry entry for ${ide}`);
@@ -22,8 +24,8 @@ describe('adapter-registry dispatch', () => {
     }
   });
 
-  it('ADAPTERS has exactly 7 entries', () => {
-    assert.equal(Object.keys(ADAPTERS).length, 7);
+  it('ADAPTERS has exactly 9 entries', () => {
+    assert.equal(Object.keys(ADAPTERS).length, 9);
   });
 
   it('resolveAdapter returns correct entry for each known IDE', () => {
@@ -53,6 +55,8 @@ describe('adapter-registry dispatch', () => {
     assert.equal(resolveAdapter('gemini').install, installGeminiCli);
     assert.equal(resolveAdapter('kiro').install, installKiro);
     assert.equal(resolveAdapter('qoder').install, installQoder);
+    assert.equal(resolveAdapter('workbuddy').install, installWorkBuddy);
+    assert.equal(resolveAdapter('trae').install, installTrae);
   });
 
   it('installIdes: all IDEs dispatch without error (dryRun)', () => {
@@ -61,7 +65,7 @@ describe('adapter-registry dispatch', () => {
     for (const ide of KNOWN_IDES) {
       results.push(resolveAdapter(ide).install(opts));
     }
-    assert.equal(results.length, 7);
+    assert.equal(results.length, 9);
     for (const r of results) {
       assert.ok(r, 'each install should return a result value');
     }
@@ -90,7 +94,7 @@ describe('isAdapterInstalled', () => {
 describe('checkPath coverage', () => {
   it('checkPath is defined for adapters with filesystem markers', () => {
     // These have filesystem markers
-    ['cursor', 'codex', 'gemini', 'kiro', 'qoder', 'claude'].forEach((ide) => {
+    ['cursor', 'codex', 'gemini', 'kiro', 'qoder', 'claude', 'trae', 'workbuddy'].forEach((ide) => {
       assert.ok(Array.isArray(ADAPTERS[ide].checkPath), `${ide} should have checkPath`);
     });
   });

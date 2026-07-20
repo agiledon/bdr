@@ -23,7 +23,7 @@ Usage:
   openmole --version                  Show version
 
 Init options:
-  --ides <list>       Comma-separated: cursor,opencode,gemini,claude,codex,kiro,qoder
+  --ides <list>       Comma-separated: cursor,opencode,gemini,claude,codex,kiro,qoder,workbuddy,trae
   --all               Configure all IDEs
   --none              Workspace only, skip IDE configuration
   --force             Overwrite existing config

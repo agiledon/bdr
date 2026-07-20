@@ -35,5 +35,11 @@ export function printInstallSummary({ title, targetDir, results, extraLines = []
   if (results.some((r) => r.ide === 'gemini' && !r.skipped)) {
     console.log('  • Gemini CLI: 重启后运行 /skills 确认 openmole-* skills');
   }
+  if (results.some((r) => r.ide === 'workbuddy' && !r.skipped)) {
+    console.log('  • WorkBuddy: 重启后运行 /skills 确认 openmole-* skills');
+  }
+  if (results.some((r) => r.ide === 'trae' && !r.skipped)) {
+    console.log('  • Trae: 重启后在 Rules & Skills 中确认 openmole-* skills');
+  }
   console.log('  • 运行 /mole-explore . <change-name> 开始第一个 change');
 }

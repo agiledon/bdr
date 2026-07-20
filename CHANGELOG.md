@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.3 — 2026-07-20
+
+- 新增 **WorkBuddy** 适配：`openmole init --ides workbuddy` 写入项目级 `.workbuddy/skills/` 与 `.workbuddy/commands/`（复用 kiro/qoder 的 project-skills adapter 模式）
+- 新增 **Trae** 适配：`openmole init --ides trae` 写入项目级 `.trae/skills/`（Trae 无 slash 命令，仅安装 skill，复用 codex 模式）
+- IDE 总数 7 → 9；同步更新 README、`ide-select` 交互列表、`summary` 提示与单元测试
+
 ## 0.3.0 — 2026-06-05
 
 - 新增 `openmole init` CLI：交互式 IDE 多选、workspace bootstrap

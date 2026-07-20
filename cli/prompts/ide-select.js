@@ -9,6 +9,8 @@ export const IDE_DEFINITIONS = [
   { value: 'codex', label: 'Codex', phase: 'b' },
   { value: 'kiro', label: 'Kiro', phase: 'b' },
   { value: 'qoder', label: 'Qoder', phase: 'b' },
+  { value: 'workbuddy', label: 'WorkBuddy', phase: 'b' },
+  { value: 'trae', label: 'Trae', phase: 'b' },
 ];
 
 export const ALL_IDE_VALUES = IDE_DEFINITIONS.map((d) => d.value);

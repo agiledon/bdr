@@ -5,7 +5,7 @@ import assert from 'node:assert';
 import { needsReinstall, installIde, installIdes } from '../../../cli/lib/ide-install.js';
 import { resolveAdapter, isAdapterInstalled } from '../../../cli/lib/adapter-registry.js';
 
-const KNOWN_IDES = ['cursor', 'opencode', 'claude', 'codex', 'gemini', 'kiro', 'qoder'];
+const KNOWN_IDES = ['cursor', 'opencode', 'claude', 'codex', 'gemini', 'kiro', 'qoder', 'workbuddy', 'trae'];
 const BASE_OPTS = {
   packageRoot: '/tmp/openmole-test',
   targetDir: '/tmp/openmole-test-target',
@@ -93,7 +93,7 @@ describe('installIdes error handling', () => {
 
   it('processes all known IDEs without error (dryRun)', () => {
     const results = installIdes(KNOWN_IDES, BASE_OPTS);
-    assert.equal(results.length, 7);
+    assert.equal(results.length, 9);
     for (const r of results) {
       assert.ok(r, 'each install result should be defined');
     }

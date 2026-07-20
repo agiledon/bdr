@@ -1,6 +1,6 @@
 {
   "name": "openmole",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "OpenMole — AI-driven refactoring skill plugin and CLI",
   "type": "module",
   "main": ".opencode/plugins/openmole.js",
@@ -39,7 +39,9 @@
     "cursor",
     "opencode",
     "kiro",
-    "qoder"
+    "qoder",
+    "workbuddy",
+    "trae"
   ],
   "publishConfig": {
     "access": "public"

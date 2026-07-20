@@ -2,7 +2,7 @@
 
 ![OpenMole Logo](docs/images/logo.jpg)
 
-**Version 0.8.2** · CLI: `openmole init` · `openmole update`
+**Version 0.8.3** · CLI: `openmole init` · `openmole update`
 
 > **npm 官方包名 / npm package name:** [`openmole`](https://www.npmjs.com/package/openmole)  
 > 安装：`npm install -g openmole` · CLI 命令已更名 **`openmole`**
@@ -69,7 +69,7 @@ openmole/                         # npm package root
 ### Tech stack
 
 - **Skills / Commands**: Markdown + YAML frontmatter
-- **Plugin harnesses**: Cursor, OpenCode, Claude Code, Codex, Gemini CLI, Kiro, Qoder
+- **Plugin harnesses**: Cursor, OpenCode, Claude Code, Codex, Gemini CLI, Kiro, Qoder, WorkBuddy, Trae
 - **CLI**: Node.js ESM + `@clack/prompts` (CLI only; plugin runtime has no third-party npm deps)
 - **License**: MIT
 
@@ -110,7 +110,7 @@ After upgrading OpenMole, run `openmole update` in the target project to refresh
 | Flag | Description |
 |------|-------------|
 | `--ides cursor,opencode,...` | Non-interactive IDE list |
-| `--all` | Configure all 7 IDEs |
+| `--all` | Configure all 9 IDEs |
 | `--none` | Workspace only (`openmole/`) |
 | `--force` | Overwrite existing workspace / IDE config |
 | `--global` | OpenCode user config (`~/.config/opencode/`) |
@@ -131,6 +131,8 @@ After upgrading OpenMole, run `openmole update` in the target project to refresh
 | **Gemini CLI** | Project `.gemini/skills/`, `.gemini/commands/`, `.gemini/extensions/openmole` symlink |
 | **Kiro** | Project `.kiro/skills/`, `.kiro/commands/` |
 | **Qoder** | Project `.qoder/skills/`, `.qoder/commands/` |
+| **WorkBuddy** | Project `.workbuddy/skills/`, `.workbuddy/commands/` |
+| **Trae** | Project `.trae/skills/` (no slash commands; skills auto-discovered) |
 
 **Extend mode**: If `openmole/config.yaml` exists, workspace is preserved; only IDEs missing from `installed_ides` are configured.
 
@@ -155,6 +157,8 @@ openmole update --dry-run
 | Gemini CLI | [.gemini/INSTALL.md](.gemini/INSTALL.md) |
 | Kiro | [.kiro/INSTALL.md](.kiro/INSTALL.md) |
 | Qoder | [.qoder/INSTALL.md](.qoder/INSTALL.md) |
+| WorkBuddy | [.workbuddy/INSTALL.md](.workbuddy/INSTALL.md) |
+| Trae | [.trae/INSTALL.md](.trae/INSTALL.md) |
 
 ### Development
 
@@ -184,7 +188,7 @@ npm link && openmole --help
 
 OpenMole（坏味道驱动重构）是一套面向编码 Agent 的软件重构方法论与 Plugin 框架。规约内嵌于各 phase skill；目标项目工件位于 `openmole/changes/<change-name>/`。
 
-**当前版本**：0.8.2（CLI：`openmole init` · `openmole update`）
+**当前版本**：0.8.3（CLI：`openmole init` · `openmole update`）
 
 ### 命令与 Skill
 
@@ -236,7 +240,7 @@ openmole/                         # npm package root
 ### 技术栈
 
 - **Skill / Command**：Markdown + YAML frontmatter
-- **Plugin harness**：Cursor、OpenCode、Claude Code、Codex、Gemini CLI、Kiro、Qoder
+- **Plugin harness**：Cursor、OpenCode、Claude Code、Codex、Gemini CLI、Kiro、Qoder、WorkBuddy、Trae
 - **CLI**：Node.js ESM + `@clack/prompts`（仅 CLI；plugin 运行时零第三方依赖）
 - **许可证**：MIT
 
@@ -277,7 +281,7 @@ openmole init
 | 选项 | 说明 |
 |------|------|
 | `--ides cursor,opencode,...` | 非交互指定 IDE |
-| `--all` | 配置全部 7 个 IDE |
+| `--all` | 配置全部 9 个 IDE |
 | `--none` | 仅创建 `openmole/` 工作区 |
 | `--force` | 覆盖已有 workspace / IDE 配置 |
 | `--global` | OpenCode 写入用户级 `~/.config/opencode/` |
@@ -298,6 +302,8 @@ openmole init
 | **Gemini CLI** | 项目 `.gemini/skills/`、`.gemini/commands/`、`.gemini/extensions/openmole` symlink |
 | **Kiro** | 项目 `.kiro/skills/`、`.kiro/commands/` |
 | **Qoder** | 项目 `.qoder/skills/`、`.qoder/commands/` |
+| **WorkBuddy** | 项目 `.workbuddy/skills/`、`.workbuddy/commands/` |
+| **Trae** | 项目 `.trae/skills/`（无 slash 命令；skill 自动发现） |
 
 **Extend 模式**：已存在 `openmole/config.yaml` 时保留 workspace，仅为 `installed_ides` 中缺失的 IDE 追加配置。
 
@@ -322,6 +328,8 @@ openmole update --dry-run
 | Gemini CLI | [.gemini/INSTALL.md](.gemini/INSTALL.md) |
 | Kiro | [.kiro/INSTALL.md](.kiro/INSTALL.md) |
 | Qoder | [.qoder/INSTALL.md](.qoder/INSTALL.md) |
+| WorkBuddy | [.workbuddy/INSTALL.md](.workbuddy/INSTALL.md) |
+| Trae | [.trae/INSTALL.md](.trae/INSTALL.md) |
 
 ### 开发验证
 
