@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.0 — 2026-07-25
+
+- 架构级重构扩展：新增 ARCH/DESIGN/IMPL 三级坏味道层次
+- 新增写操作安全门禁（不可豁免约束）
+- 子 change 模型：arch/、design/、impl/ 独立文档链
+- 级别特定重构步骤：IMPL 6 步 / DESIGN 7 步 / ARCH 8 步
+- 语言自动侦测：explore 步骤自动识别目标语言
+- 所有模板与技能升级至三级层次架构
+
 ## 0.8.4 — 2026-07-20
 
 - 新增 **WorkBuddy** 适配：`openmole init --ides workbuddy` 写入项目级 `.workbuddy/skills/` 与 `.workbuddy/commands/`（复用 kiro/qoder 的 project-skills adapter 模式）
