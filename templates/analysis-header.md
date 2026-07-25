@@ -45,7 +45,7 @@
 | 检查项 | 说明 |
 |--------|------|
 | 宪法 ↔ 元规约 | specification 是否与 constitution §3 对齐 |
-| 元规约 ↔ badsmells | §4 必填字段齐全；`[SDD]` 是否标注 |
-| badsmells ↔ 任务 | 每个 B-Txx 是否引用 BS-ID；无遗漏、无孤儿任务 |
-| 任务 ↔ 宪法 | DoD 含测试绿 + 用户确认 |
+| 元规约 ↔ badsmells | 级别字段（ARCH/DESIGN/IMPL）必填；`[SDD]` 是否标注 |
+| badsmells ↔ 任务 | 每个 B-Txx 是否引用 BS-ID；级别是否一致；无遗漏、无孤儿任务 |
+| 任务 ↔ 宪法 | DoD 含测试绿 + 用户确认 + **写操作门禁** |
 | OpenMole ↔ SDD | 对外行为变更是否已在 SDD 立项 |

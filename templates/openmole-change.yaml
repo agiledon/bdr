@@ -1,4 +1,5 @@
 name: refactor-example
 created: 2026-06-05
 scan_scope: src/example/
+default_level: impl   # arch | design | impl（默认级别，用于未指定级别时）
 status: active   # active | archived
