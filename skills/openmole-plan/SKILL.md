@@ -5,19 +5,21 @@ description: mole:plan — 从未清除/部分残余坏味道生成 tasks.md
 
 # OpenMole Plan — 任务分解
 
+> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用均相对于**用户运行 mole 命令时的 CWD**（记作 `{cwd}`）。
+
 ## 何时使用
 
 用户运行 `mole:plan`，或在 analyze 完成后生成/更新任务。
 
 ## 工作区解析
 
-1. 读取 `openmole/config.yaml` → `current_change`
-2. `{change_dir}` = `openmole/changes/{change_name}/`
+1. 读取 `{cwd}/openmole/config.yaml` → `current_change`
+2. `{change_dir}` = `{cwd}/openmole/changes/{change_name}/`
 3. 无 `current_change` → **停止**，提示先 `mole:explore`
 
 ## 门禁
 
-若 `{change_dir}/{level}/badsmells.md` 版本 **高于** 同目录 `tasks.md` 页眉依据版本 → **停止**，先 `mole:verify`
+若 `{change_dir}/badsmells.md` 版本 **高于** 同目录 `tasks.md` 页眉依据版本 → **停止**，先 `mole:verify`
 
 ## 级别感知
 
@@ -31,7 +33,7 @@ description: mole:plan — 从未清除/部分残余坏味道生成 tasks.md
 
 1. 读取 `{change_dir}/{level}/badsmells.md` §2.0
 2. 选取 **未清除** / **部分残余** 条目
-3. ID：`B-T序号`；模板：`templates/tasks-entry.md`、`tasks-header.md`
+3. ID：`B-T序号`；模板：`{cwd}/openmole/templates/tasks-entry.md`、`{cwd}/openmole/templates/tasks-header.md`（模板解析见 `skills/openmole-explore/SKILL.md` §模板解析）
 4. 每任务按级别填写步骤：
    - IMPL 6 步
    - DESIGN 7 步

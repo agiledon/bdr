@@ -5,15 +5,17 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 # OpenMole Explore — 识别坏味道
 
+> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用均相对于**用户运行 mole 命令时的 CWD**（记作 `{cwd}`）。完整说明见主版本 `skills/openmole-explore/SKILL.md`。
+
 ## 何时使用
 
 用户运行 `mole:explore` 或需要识别/更新坏味道清单时。
 
 ## 工作区解析
 
-1. 读取 `openmole/config.yaml` → `current_change`
-2. `{change_dir}` = `openmole/changes/{change_name}/`
-3. 无 `openmole/config.yaml` → 提示从 `templates/openmole-config.yaml.example` 创建
+1. 读取 `{cwd}/openmole/config.yaml` → `current_change`
+2. `{change_dir}` = `{cwd}/openmole/changes/{change_name}/`
+3. 无 `{cwd}/openmole/config.yaml` → 提示从 `{cwd}/openmole/templates/openmole-config.yaml.example` 创建
 
 ## D3 生命周期
 
@@ -25,12 +27,12 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 新建 change 时：
 
-1. 创建 `openmole/changes/<name>/`、`.openmole-change.yaml`（见 `templates/openmole-change.yaml`）
-2. 更新 `openmole/config.yaml` 的 `current_change`
+1. 创建 `{cwd}/openmole/changes/<name>/`、`{cwd}/openmole/changes/<name>/.openmole-change.yaml`（参考 `{cwd}/openmole/templates/openmole-change.yaml`）
+2. 更新 `{cwd}/openmole/config.yaml` 的 `current_change`
 
 ## 跨 change 去重（步骤 0）
 
-1. 扫描 `openmole/changes/*/badsmells.md` 与 `openmole/changes/archive/*/badsmells.md` §2.0
+1. 扫描 `{cwd}/openmole/changes/*/badsmells.md` 与 `{cwd}/openmole/changes/archive/*/badsmells.md` §2.0
 2. 构建 BS-ID 与指纹 `(规范化路径, Fowler 标签)`
 3. 已消除同指纹 → **跳过**，注明原 change
 4. 未清除/部分残余于其他 change → **警告**，不得静默重复
@@ -45,7 +47,7 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 ## 输出格式
 
-- 使用 `templates/badsmells-header.md` + `badsmells-entry.md`
+- 使用 `{cwd}/openmole/templates/badsmells-header.md` + `badsmells-entry.md`
 - §2.0 索引；七字段表格；升版时 `git rev-parse HEAD` 填提交版本
 
 ## 语言附录

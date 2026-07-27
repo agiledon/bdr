@@ -5,14 +5,16 @@ description: mole:archive — 检查 change 完成度并归档至 openmole/chang
 
 # OpenMole Archive — 归档 change
 
+> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用均相对于**用户运行 mole 命令时的 CWD**（记作 `{cwd}`）。
+
 ## 何时使用
 
 用户运行 `mole:archive`，当前 change 重构周期结束或需封存。
 
 ## 工作区解析
 
-1. 读取 `openmole/config.yaml` → `current_change`
-2. `{change_dir}` = `openmole/changes/{change_name}/`
+1. 读取 `{cwd}/openmole/config.yaml` → `current_change`
+2. `{change_dir}` = `{cwd}/openmole/changes/{change_name}/`
 3. 无 `current_change` → **停止**，无活跃 change 可归档
 
 ## 完成度检查
@@ -27,11 +29,11 @@ description: mole:archive — 检查 change 完成度并归档至 openmole/chang
 ## 归档动作
 
 ```bash
-mv openmole/changes/<name> openmole/changes/archive/$(date +%Y-%m-%d)-<name>/
+mv {cwd}/openmole/changes/<name> {cwd}/openmole/changes/archive/$(date +%Y-%m-%d)-<name>/
 ```
 
-- 更新 `.openmole-change.yaml` → `status: archived`
-- `openmole/config.yaml` 清空 `current_change`
+- 更新 `{change_dir}/.openmole-change.yaml` → `status: archived`
+- `{cwd}/openmole/config.yaml` 清空 `current_change`
 
 ## OpenMole 规约摘要（内嵌于各 Skill，非独立文件）
 

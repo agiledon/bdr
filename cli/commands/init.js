@@ -11,6 +11,7 @@ import {
 } from '../lib/ide-install.js';
 import { printInstallSummary, notify } from '../lib/summary.js';
 import { mergeGitignoreSnippet } from '../workspace/gitignore.js';
+import { copyProjectTemplates } from '../workspace/templates.js';
 import { isInteractiveWelcome, showWelcome } from '../prompts/welcome.js';
 
 function parseIdesFlag(value) {
@@ -104,6 +105,12 @@ export async function runInit(argv, { skipWelcome = false } = {}) {
     targetDir: opts.targetDir,
     packageVersion: version,
     force: opts.force,
+    dryRun: opts.dryRun,
+  });
+
+  const tmpl = copyProjectTemplates({
+    packageRoot,
+    targetDir: opts.targetDir,
     dryRun: opts.dryRun,
   });
 

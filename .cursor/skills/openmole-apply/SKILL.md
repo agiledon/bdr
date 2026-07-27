@@ -5,14 +5,16 @@ description: mole:apply — 执行当前 change 下一个未完成的 B-Txx
 
 # OpenMole Apply — 执行重构
 
+> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用均相对于**用户运行 mole 命令时的 CWD**（记作 `{cwd}`）。
+
 ## 何时使用
 
 用户运行 `mole:apply`，且当前 change 有未完成任务。
 
 ## 工作区解析
 
-1. 读取 `openmole/config.yaml` → `current_change`
-2. `{change_dir}` = `openmole/changes/{change_name}/`
+1. 读取 `{cwd}/openmole/config.yaml` → `current_change`
+2. `{change_dir}` = `{cwd}/openmole/changes/{change_name}/`
 3. 无 `current_change` → **停止**，提示先 `mole:explore`
 
 ## 选取任务
