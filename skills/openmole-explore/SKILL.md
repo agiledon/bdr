@@ -5,7 +5,11 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 # OpenMole Explore — 识别坏味道
 
-> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用（如 `openmole/config.yaml`、`openmole/changes/`、`openmole/templates/`）均相对于**用户运行 mole 命令时的当前工作目录（CWD）**，而非相对于技能文件所在目录。
+> **路径解析说明**：
+> - `{cwd}` = 用户运行 mole 命令时的当前工作目录（目标项目根目录）
+> - `{config_dir}` = OpenMole 用户级配置目录（`~/.config/openmole/`，遵守 XDG Base Directory 规范）
+> - 项目级文件（`config.yaml`、`changes/`）位于 `{cwd}/openmole/`
+> - 共享资源（`templates/`）位于 `{config_dir}/`
 
 ## 何时使用
 
@@ -15,7 +19,7 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 1. 读取 `{cwd}/openmole/config.yaml` → `current_change`
 2. `{change_dir}` = `{cwd}/openmole/changes/{change_name}/`
-3. 无 `{cwd}/openmole/config.yaml` → 提示从 `{cwd}/openmole/templates/openmole-config.yaml.example` 创建（模板解析见 §模板解析）
+3. 无 `{cwd}/openmole/config.yaml` → 提示从 `{config_dir}/templates/openmole-config.yaml.example` 创建（模板解析见 §模板解析）
 
 ## D3 生命周期
 
@@ -27,7 +31,7 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 新建 change 时：
 
-1. 创建 `{cwd}/openmole/changes/<name>/`、`{cwd}/openmole/changes/<name>/.openmole-change.yaml`（参考 `{cwd}/openmole/templates/openmole-change.yaml`）
+1. 创建 `{cwd}/openmole/changes/<name>/`、`{cwd}/openmole/changes/<name>/.openmole-change.yaml`（参考 `{config_dir}/templates/openmole-change.yaml`）
 2. 更新 `{cwd}/openmole/config.yaml` 的 `current_change`
 
 ## 级别选择
@@ -81,9 +85,9 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 ## 输出格式
 
-- 使用 `{cwd}/openmole/templates/badsmells-header.md` + `badsmells-entry.md`（模板解析见 §模板解析）
+- 使用 `{config_dir}/templates/badsmells-header.md` + `badsmells-entry.md`（模板解析见 §模板解析）
 - §2.0 索引含 **类别** 列；七字段表格含 **级别**；升版时 `git rev-parse HEAD` 填提交版本
-- 静态参考：`{cwd}/openmole/templates/badsmells-catalog.md`（全级别坏味道全集）
+- 静态参考：`{config_dir}/templates/badsmells-catalog.md`（全级别坏味道全集）
 
 ## 语言附录
 
@@ -96,12 +100,12 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 ## 模板解析
 
-`{cwd}/openmole/templates/` 下的模板按以下顺序解析：
+`{config_dir}/templates/` 下的模板按以下顺序解析：
 
-1. **项目级模板**：`{cwd}/openmole/templates/`（`openmole init` 时自动从安装包复制至项目）
+1. **用户级模板**：`{config_dir}/templates/`（`openmole init` / `openmole update` 时自动从安装包复制至用户配置目录）
 2. **安装包级模板**：OpenMole 安装目录下的 `templates/`（通过 `OPENMOLE_HOME` 环境变量或从 `node_modules/openmole/` 向上查找）
 
-`openmole init` 会自动将模板从安装包复制到项目的 `{cwd}/openmole/templates/` 目录。若项目级模板不存在，应从安装包级读取。
+模板是跨项目共享资源，仅存于用户级配置目录（`~/.config/openmole/templates/`），不复制到目标项目内。
 
 ## OpenMole 规约摘要（内嵌于各 Skill，非独立文件）
 

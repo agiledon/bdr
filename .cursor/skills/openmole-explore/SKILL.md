@@ -5,7 +5,10 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 # OpenMole Explore — 识别坏味道
 
-> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用均相对于**用户运行 mole 命令时的 CWD**（记作 `{cwd}`）。完整说明见主版本 `skills/openmole-explore/SKILL.md`。
+> **路径解析说明**：
+> - `{cwd}` = 用户运行 mole 命令时的当前工作目录
+> - `{config_dir}` = OpenMole 用户级配置目录（`~/.config/openmole/`）
+> - 完整说明见主版本 `skills/openmole-explore/SKILL.md`
 
 ## 何时使用
 
@@ -15,7 +18,7 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 1. 读取 `{cwd}/openmole/config.yaml` → `current_change`
 2. `{change_dir}` = `{cwd}/openmole/changes/{change_name}/`
-3. 无 `{cwd}/openmole/config.yaml` → 提示从 `{cwd}/openmole/templates/openmole-config.yaml.example` 创建
+3. 无 `{cwd}/openmole/config.yaml` → 提示从 `{config_dir}/templates/openmole-config.yaml.example` 创建
 
 ## D3 生命周期
 
@@ -27,7 +30,7 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 新建 change 时：
 
-1. 创建 `{cwd}/openmole/changes/<name>/`、`{cwd}/openmole/changes/<name>/.openmole-change.yaml`（参考 `{cwd}/openmole/templates/openmole-change.yaml`）
+1. 创建 `{cwd}/openmole/changes/<name>/`、`{cwd}/openmole/changes/<name>/.openmole-change.yaml`（参考 `{config_dir}/templates/openmole-change.yaml`）
 2. 更新 `{cwd}/openmole/config.yaml` 的 `current_change`
 
 ## 跨 change 去重（步骤 0）
@@ -47,7 +50,7 @@ description: mole:explore — 创建/继续 change，扫描源码产出 badsmell
 
 ## 输出格式
 
-- 使用 `{cwd}/openmole/templates/badsmells-header.md` + `badsmells-entry.md`
+- 使用 `{config_dir}/templates/badsmells-header.md` + `badsmells-entry.md`
 - §2.0 索引；七字段表格；升版时 `git rev-parse HEAD` 填提交版本
 
 ## 语言附录

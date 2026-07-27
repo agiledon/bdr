@@ -5,7 +5,11 @@ description: mole:verify — 当前 change 内 badsmells 与 tasks 差分验证
 
 # OpenMole Verify — 差分验证
 
-> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用均相对于**用户运行 mole 命令时的 CWD**（记作 `{cwd}`）。
+> **路径解析说明**：
+> - `{cwd}` = 用户运行 mole 命令时的当前工作目录（目标项目根目录）
+> - `{config_dir}` = OpenMole 用户级配置目录（`~/.config/openmole/`）
+> - 项目级文件（`config.yaml`、`changes/`）位于 `{cwd}/openmole/`
+> - 共享资源（`templates/`）位于 `{config_dir}/`
 
 ## 何时使用
 
@@ -42,7 +46,7 @@ description: mole:verify — 当前 change 内 badsmells 与 tasks 差分验证
 
 ## 输出
 
-更新 `{change_dir}/{level}/analysis.md` 与 `{change_dir}/{level}/tasks.md`（必要时）。模板：`{cwd}/openmole/templates/analysis-header.md`（模板解析见 `skills/openmole-explore/SKILL.md` §模板解析）
+更新 `{change_dir}/{level}/analysis.md` 与 `{change_dir}/{level}/tasks.md`（必要时）。模板：`{config_dir}/templates/analysis-header.md`（模板解析见 `skills/openmole-explore/SKILL.md` §模板解析）
 
 ## 完成后建议
 

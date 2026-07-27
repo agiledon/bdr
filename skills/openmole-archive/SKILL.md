@@ -5,7 +5,11 @@ description: mole:archive — 检查 change 完成度并归档至 openmole/chang
 
 # OpenMole Archive — 归档 change
 
-> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用均相对于**用户运行 mole 命令时的 CWD**（记作 `{cwd}`）。
+> **路径解析说明**：
+> - `{cwd}` = 用户运行 mole 命令时的当前工作目录（目标项目根目录）
+> - `{config_dir}` = OpenMole 用户级配置目录（`~/.config/openmole/`）
+> - 项目级文件（`config.yaml`、`changes/`）位于 `{cwd}/openmole/`
+> - 共享资源（`templates/`）位于 `{config_dir}/`
 
 ## 何时使用
 

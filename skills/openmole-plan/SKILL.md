@@ -5,7 +5,11 @@ description: mole:plan — 从未清除/部分残余坏味道生成 tasks.md
 
 # OpenMole Plan — 任务分解
 
-> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用均相对于**用户运行 mole 命令时的 CWD**（记作 `{cwd}`）。
+> **路径解析说明**：
+> - `{cwd}` = 用户运行 mole 命令时的当前工作目录（目标项目根目录）
+> - `{config_dir}` = OpenMole 用户级配置目录（`~/.config/openmole/`）
+> - 项目级文件（`config.yaml`、`changes/`）位于 `{cwd}/openmole/`
+> - 共享资源（`templates/`）位于 `{config_dir}/`
 
 ## 何时使用
 
@@ -33,7 +37,7 @@ description: mole:plan — 从未清除/部分残余坏味道生成 tasks.md
 
 1. 读取 `{change_dir}/{level}/badsmells.md` §2.0
 2. 选取 **未清除** / **部分残余** 条目
-3. ID：`B-T序号`；模板：`{cwd}/openmole/templates/tasks-entry.md`、`{cwd}/openmole/templates/tasks-header.md`（模板解析见 `skills/openmole-explore/SKILL.md` §模板解析）
+3. ID：`B-T序号`；模板：`{config_dir}/templates/tasks-entry.md`、`{config_dir}/templates/tasks-header.md`（模板解析见 `skills/openmole-explore/SKILL.md` §模板解析）
 4. 每任务按级别填写步骤：
    - IMPL 6 步
    - DESIGN 7 步

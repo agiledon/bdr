@@ -5,7 +5,9 @@ description: mole:apply — 执行当前 change 下一个未完成的 B-Txx
 
 # OpenMole Apply — 执行重构
 
-> **路径解析说明**：本技能中所有不带绝对路径前缀的文件引用均相对于**用户运行 mole 命令时的 CWD**（记作 `{cwd}`）。
+> **路径解析说明**：
+> - `{cwd}` = 用户运行 mole 命令时的当前工作目录
+> - `{config_dir}` = OpenMole 用户级配置目录（`~/.config/openmole/`）
 
 ## 何时使用
 

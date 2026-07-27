@@ -5,7 +5,7 @@ import { workspacePaths, refreshInitMetadata } from '../workspace/bootstrap.js';
 import { readConfigFile } from '../lib/config-yaml.js';
 import { readPackageVersion, installIdes } from '../lib/ide-install.js';
 import { printInstallSummary } from '../lib/summary.js';
-import { copyProjectTemplates } from '../workspace/templates.js';
+import { copyUserTemplates } from '../workspace/templates.js';
 import { mergeGitignoreSnippet } from '../workspace/gitignore.js';
 
 export function parseUpdateArgv(argv) {
@@ -77,9 +77,8 @@ export async function runUpdate(argv) {
     gitignoreChanged = git.changed;
   }
 
-  copyProjectTemplates({
+  copyUserTemplates({
     packageRoot,
-    targetDir: opts.targetDir,
     dryRun: opts.dryRun,
   });
 
